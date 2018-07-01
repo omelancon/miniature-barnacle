@@ -17,6 +17,19 @@ lexer.set_line_rule("\n")
 lexer.build()
 
 
+def use_only_known_dels(molecula):
+    replacements = [
+        ('\]', ')'),
+        ('\}', ')'),
+        ('\[', '('),
+        ('\{', '('),
+    ]
+    for old, new in replacements:
+        molecula = re.sub(old, new, molecula)
+
+    return molecula
+
+
 def find_matching_del(s):
     pairs = []
     stack = []
@@ -90,12 +103,13 @@ def create_dict(tokens):
 
 
 if __name__ == "__main__":
-    molecula = "Mg(OH)2"
-    # molecula = "K4(ON(SO3)2)2"
-    # molecula = "COOH(C(CH3)2)3CH3"
+    # molecula = "Mg(OH)2"
+    # molecula = "K4[ON(SO3)2]2"
+    molecula = "COOH{C(CH3)2}3CH3"
     # molecula = "H20"
 
     print(molecula)
+    molecula = use_only_known_dels(molecula)
 
     my_molecula = transform(molecula)
     print(my_molecula)
