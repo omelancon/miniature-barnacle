@@ -105,8 +105,8 @@ def create_dict(tokens):
 if __name__ == "__main__":
     # molecula = "Mg(OH)2"
     # molecula = "K4[ON(SO3)2]2"
-    molecula = "COOH{C(CH3)2}3CH3"
-    # molecula = "H20"
+    # molecula = "COOH{C(CH3)2}3CH3"
+    molecula = "H2O"
 
     print(molecula)
     molecula = use_only_known_dels(molecula)
