@@ -59,7 +59,7 @@ _lexer = Lexer()
 _parser = Parser()
 
 
-def count_atoms(formula):
+def parse_molecule(formula):
     _lexer.read(formula)
     for tk in _lexer:
         _parser.parse(tk)
@@ -73,6 +73,6 @@ if __name__ == "__main__":
     molecula = "COOH{C(CH3)2}3CH3"
     # molecula = "H2O"
 
-    my_dict = count_atoms(molecula)
+    my_dict = parse_molecule(molecula)
 
     print(my_dict)
